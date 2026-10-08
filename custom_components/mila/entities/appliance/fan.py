@@ -87,6 +87,9 @@ class MilaApplianceFan(MilaFan):
         #next update    
         if self._percentage_override is not None:
             return self._percentage_override
+        # below the minimum RPM (including stopped) the range maps to a negative value
+        if self.speed < MIN_FAN_RPM:
+            return 0
         return round(ranged_value_to_percentage([MIN_FAN_RPM, MAX_FAN_RPM], self.speed),-1)
 
     @property
