@@ -22,8 +22,7 @@ from ..common import MilaFan
 from .const import (
     MIN_FAN_RPM, 
     MAX_FAN_RPM, 
-    PRESET_MODE_AUTOMAGIC, 
-    PRESET_MODE_MANUAL, 
+    PRESET_MODE_AUTO,
     PRESET_MODES
 )
 
@@ -98,7 +97,7 @@ class MilaApplianceFan(MilaFan):
     @property
     def preset_mode(self):
         """Get the active preset mode."""
-        return PRESET_MODE_MANUAL if self.current_mode == ApplianceMode.Manual else PRESET_MODE_AUTOMAGIC
+        return None if self.current_mode == ApplianceMode.Manual else PRESET_MODE_AUTO
 
     async def async_turn_on(
         self,
@@ -114,7 +113,7 @@ class MilaApplianceFan(MilaFan):
         if preset_mode:
             await self.async_set_preset_mode(preset_mode)
         if percentage is None and preset_mode is None:
-            await self.async_set_preset_mode(PRESET_MODE_AUTOMAGIC)
+            await self.async_set_preset_mode(PRESET_MODE_AUTO)
 
     async def async_turn_off(self, **kwargs) -> None:
         """Turn the device off."""
@@ -123,8 +122,7 @@ class MilaApplianceFan(MilaFan):
     # TODO: Convert the pecentage back and forth from how Mila converts RPM to %. (It's uneven distribution of RPM ranges to Percentage)
     async def async_set_percentage(self, percentage: int) -> None:
         """Set the percentage of the fan."""
-        if self.preset_mode == PRESET_MODE_AUTOMAGIC:
-            await self.async_set_preset_mode(PRESET_MODE_MANUAL)
+        # set_fan_speed switches the appliance to manual mode
         await self.device.set_fan_speed(percentage)
         await asyncio.sleep(1)
         self._percentage_override = percentage
@@ -138,7 +136,7 @@ class MilaApplianceFan(MilaFan):
         _LOGGER.info(f"Setting the fan mode to {preset_mode} speed")
         await self.device.set_fan_mode(preset_mode)
                 
-        if preset_mode == PRESET_MODE_AUTOMAGIC:
+        if preset_mode == PRESET_MODE_AUTO:
             self._percentage_override = None
 
     def _update_listener(self) -> None:

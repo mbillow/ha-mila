@@ -61,7 +61,7 @@ class MilaAppliance(MilaDevice):
         await self._coordinator.async_request_refresh()
 
     async def set_fan_mode(self, mode: str):
-        if mode == "Automagic":
+        if mode in ("Auto", "Automagic"):
             await self._api.set_automagic_mode(self.room_id)
         else:
             await self._api.set_manual_mode(self.room_id, 10)
