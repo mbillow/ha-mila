@@ -21,7 +21,7 @@ class MilaSelect(MilaEntity, SelectEntity):
     
     @property
     def name(self) -> str:
-        return f"{self.device.name_or_id} {self._name}"
+        return self._name
 
     @property
     def options(self) -> list[str]:

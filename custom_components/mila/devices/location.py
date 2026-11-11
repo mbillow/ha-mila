@@ -3,7 +3,7 @@
 import logging
 from typing import List
 from benedict import benedict
-from homeassistant.const import CONCENTRATION_MICROGRAMS_PER_CUBIC_METER
+from homeassistant.const import UnitOfDensity
 from homeassistant.helpers.entity import Entity
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator
 from homeassistant.components.sensor import SensorStateClass, SensorDeviceClass
@@ -28,9 +28,11 @@ class MilaLocation(MilaDevice):
 
     @property
     def name(self) -> str:
-        return f"{self._device_data['address.city']}, \
-            {self._device_data['address.country']} \
-            (#{self._device_data['id']})"
+        return (
+            f"{self._device_data['address.city']}, "
+            f"{self._device_data['address.country']} "
+            f"(#{self._device_data['id']})"
+        )
 
     @property
     def _device_data(self) -> benedict:
@@ -66,7 +68,7 @@ class MilaLocation(MilaDevice):
                 "Station PM2.5",
                 "outdoorStation.sensor.latest.value",
                 device_class=SensorDeviceClass.PM25,
-                uom=CONCENTRATION_MICROGRAMS_PER_CUBIC_METER,
+                uom=UnitOfDensity.MICROGRAMS_PER_CUBIC_METER,
                 state_class=SensorStateClass.MEASUREMENT,
             ),
             MilaLocationPathSensor(

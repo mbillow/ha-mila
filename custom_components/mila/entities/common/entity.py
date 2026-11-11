@@ -5,6 +5,9 @@ from ...devices import MilaDevice
 
 class MilaEntity(CoordinatorEntity):
     """Base class for all Mila entities"""
+
+    _attr_has_entity_name = True
+
     def __init__(self, device: MilaDevice):
         super().__init__(device._coordinator)
         self._device = device

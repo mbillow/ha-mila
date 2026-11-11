@@ -21,7 +21,7 @@ class MilaSwitch(MilaEntity, SwitchEntity):
     
     @property
     def name(self) -> str:
-        return f"{self.device.name_or_id} {self._name}"
+        return self._name
 
     @property
     def is_on(self) -> bool:
