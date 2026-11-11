@@ -5,7 +5,7 @@ from asyncio import run_coroutine_threadsafe
 from typing import Any, cast
 from aiohttp import ClientSession
 
-import milasdk
+from . import milasdk
 from homeassistant.core import HomeAssistant
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.helpers import config_entry_oauth2_flow, aiohttp_client

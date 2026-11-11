@@ -1,6 +1,6 @@
 import logging
 from typing import Any, Optional
-from milasdk import SoundsConfig
+from ...milasdk import SoundsConfig
 
 from ...const import DOMAIN
 from ...devices import MilaAppliance

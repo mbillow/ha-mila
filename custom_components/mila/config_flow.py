@@ -5,15 +5,15 @@ import logging
 from typing import Any, Mapping, Optional
 import voluptuous as vol
 
-from homeassistant.config_entries import ConfigEntry, ConfigFlow, OptionsFlow, CONN_CLASS_CLOUD_POLL
+from homeassistant.config_entries import ConfigEntry, ConfigFlow, OptionsFlow
 from homeassistant.const import CONF_SCAN_INTERVAL, CONF_EMAIL, CONF_PASSWORD
 from homeassistant.data_entry_flow import FlowResult
 from homeassistant.helpers import aiohttp_client
 from homeassistant.core import callback
 import homeassistant.helpers.config_validation as cv
 
-from milasdk import DefaultAsyncSession
-from milasdk.api import MilaApi
+from .milasdk import DefaultAsyncSession
+from .milasdk.api import MilaApi
 from .const import (
     CONF_TIMEOUT,
     CONF_TOKEN,
@@ -43,7 +43,6 @@ class MilaConfigFlow(ConfigFlow, domain=DOMAIN):
 
     VERSION = 1
     DOMAIN = DOMAIN
-    CONNECTION_CLASS = CONN_CLASS_CLOUD_POLL
 
     def __init__(self):
         self._existing_entry = None

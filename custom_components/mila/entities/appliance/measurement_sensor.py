@@ -1,6 +1,6 @@
 from typing import List, Optional
 from homeassistant.components.sensor import SensorStateClass, SensorDeviceClass
-from milasdk import ApplianceSensorKind
+from ...milasdk import ApplianceSensorKind
 
 from ...const import DOMAIN
 from ...devices import MilaAppliance

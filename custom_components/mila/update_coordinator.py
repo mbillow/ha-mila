@@ -11,7 +11,7 @@ from homeassistant.const import CONF_SCAN_INTERVAL, CONF_TIMEOUT
 from homeassistant.core import HomeAssistant
 from homeassistant.exceptions import ConfigEntryAuthFailed
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, UpdateFailed
-from milasdk import MilaApi, MilaError, OAuthError
+from .milasdk import MilaApi, MilaError, OAuthError
 
 from .auth import MilaConfigEntryAuth, MilaOauthImplementation
 from .const import (

@@ -1,6 +1,6 @@
 import logging
 from typing import Any, Optional
-from milasdk import SmartModeKind
+from ...milasdk import SmartModeKind
 
 from ...const import DOMAIN
 from ...devices import MilaAppliance

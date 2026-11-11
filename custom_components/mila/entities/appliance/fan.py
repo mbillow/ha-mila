@@ -12,7 +12,7 @@ from homeassistant.util.percentage import (
     ranged_value_to_percentage,
 )
 
-from milasdk import ApplianceSensorKind, ApplianceMode
+from ...milasdk import ApplianceSensorKind, ApplianceMode
 
 _LOGGER = logging.getLogger(__name__)
 

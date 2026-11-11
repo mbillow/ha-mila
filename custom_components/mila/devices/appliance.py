@@ -17,7 +17,7 @@ from homeassistant.components.sensor import (
     SensorDeviceClass,
     SensorStateClass
 )
-from milasdk import MilaApi, ApplianceSensorKind, SmartModeKind, SoundsConfig
+from ..milasdk import MilaApi, ApplianceSensorKind, SmartModeKind, SoundsConfig
 
 from ..util import camel_case_split, coalesce
 from .device import MilaDevice

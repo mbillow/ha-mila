@@ -5,7 +5,7 @@ from typing import List
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity import Entity, DeviceInfo
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, CALLBACK_TYPE
-from milasdk import MilaApi
+from ..milasdk import MilaApi
 
 from ..const import DATAKEY_ACCOUNT, DATAKEY_APPLIANCE, DATAKEY_LOCATION, DOMAIN, MANUFACTURER
 

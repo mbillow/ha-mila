@@ -8,7 +8,7 @@ from homeassistant.helpers.entity import Entity
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator
 from homeassistant.components.sensor import SensorStateClass, SensorDeviceClass
 
-from milasdk import MilaApi
+from ..milasdk import MilaApi
 
 from ..util import camel_case_split, coalesce
 from .device import MilaDevice
